@@ -9,8 +9,8 @@ const CountriesListShimmer = () => {
   return (
     <div className='Countries-container shimmer'>
     {
-        numberOfCards.map((card) => (
-            <div key={card} className='country-card shimmer-card'>Loading...</div>
+        numberOfCards.map((card, index) => (
+            <div key={index} className='country-card shimmer-card'>Loading...</div>
         ))
     }
       
