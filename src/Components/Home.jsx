@@ -1,4 +1,4 @@
-import { useContext, useState } from 'react'
+import { useContext, useEffect, useState } from 'react'
 import SearchBar from './SearchBar'
 import SelectMenu from './SelectMenu'
 import CountriesList from './CountriesList'
@@ -9,7 +9,18 @@ import { ThemeContext } from '../contexts/ThemeContext'
 export default function Home() {
   const [query, setQuery] = useState('');
   // const [isDark] = useOutletContext();
-  const [isDark] = useContext(ThemeContext)
+  const [isDark] = useContext(ThemeContext);
+  // const [windowWidth, setWindowWidth] = useState(window.innerWidth);
+  const [windowSize, setWindowSize] = useState({width: window.innerWidth, height: window.innerHeight});
+
+  useEffect( () => {
+    window.addEventListener('resize', () => {
+      // console.log("hiii");
+      // console.log(window.innerHeight, window.innerWidth);
+      // setWindowWidth(window.innerWidth);
+      setWindowSize({width: window.innerWidth, height: window.innerHeight});
+    })
+  })
 
   return (
     <main className={`${isDark? 'dark': ''}`}>
@@ -17,6 +28,7 @@ export default function Home() {
         <SearchBar setQuery={setQuery} />
         <SelectMenu />
       </div>
+      <h1 style={{textAlign: "center"}}>{windowSize.width} X {windowSize.height}</h1>
       {query === 'unmount' ? '' : <CountriesList query={query} />}
     </main>
   )
