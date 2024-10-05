@@ -6,7 +6,8 @@ import { useTheme } from "../hooks/useTheme";
 // const [isDark, setIsDark] = theme;
 export default function Header() {
   // const [isDark, setIsDark] = useContext(ThemeContext);
-  const [isDark] = useTheme();
+  const [isDark, setIsDark] = useTheme();
+  // const [isDark] = useTheme();
 
 
   // if(isDark) {

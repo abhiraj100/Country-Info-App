@@ -10,7 +10,15 @@ const CountriesListShimmer = () => {
     <div className='Countries-container shimmer'>
     {
         numberOfCards.map((card, index) => (
-            <div key={index} className='country-card shimmer-card'>Loading...</div>
+          <div key={index} className="country-card shimmer-card">Loading...
+            <div className="flag-container"></div>
+            <div className="card-text">
+              <h3 className="card-title"></h3>
+              <p></p>
+              <p></p>
+              <p></p>
+            </div>
+          </div>
         ))
     }
       
