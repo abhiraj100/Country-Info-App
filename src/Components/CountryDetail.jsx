@@ -2,17 +2,24 @@ import React, { useContext, useEffect, useState } from 'react'
 
 import './CountryDetail.css'
 import { Link, useLocation, useParams } from 'react-router-dom'
-import { ThemeContext } from '../contexts/ThemeContext'
+import { ThemeContext } from '../contexts/ThemeContext';
+import { useWindowSize } from '../hooks/useWindowSize';
+import { useTheme } from '../hooks/useTheme';
 
 export default function CountryDetail() {
   // const [isDark] = useOutletContext()
-  const [isDark] = useContext(ThemeContext)
+  // const [isDark] = useContext(ThemeContext)
+  const [isDark] = useTheme();
+
+
   const params = useParams()
   const { state } = useLocation()
   const countryName = params.country
 
   const [countryData, setCountryData] = useState(null)
   const [notFound, setNotFound] = useState(false)
+
+  // const windowSize = useWindowSize();
 
   console.log(countryData);
 
@@ -73,6 +80,8 @@ export default function CountryDetail() {
     'loading...'
   ) : (
     <main className={`${isDark? 'dark': ''}`}>
+      {/* <h1 style={{textAlign: "center"}}>{windowSize.width} X {windowSize.height}</h1> */}
+
       <div className="country-details-container">
         <span className="back-button" onClick={() => history.back()}>
           <i className="fa-solid fa-arrow-left"></i>&nbsp; Back
